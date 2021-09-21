@@ -43,11 +43,19 @@ export default function HomePage() {
         correct,
         correctAnswer: questions[number].correct_answer,
       };
+
+      setUserAnswers((prev) => [...prev, answerObject]);
     }
   };
 
   const nextQuestion = () => {
-    console.log("nextQuestion Here");
+    const nextQuestion = number + 1;
+
+    if (nextQuestion === TOTAL_QUESTIONS) {
+      setGameOver(true);
+    } else {
+      setNumber(nextQuestion);
+    }
   };
 
   return (

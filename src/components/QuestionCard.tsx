@@ -20,12 +20,16 @@ export const QuestionCard: React.FC<Props> = ({
       <p className="QuestionContainer">
         Question: {questionNumber} / {totalQuestions}
       </p>
-      <p>{question}</p>
+      <p>{atob(question)}</p>
       <div>
         {answers.map((answer) => (
           <div key={answer}>
-            <button disabled={userAnswer} value={answer} onClick={callback}>
-              {answer}
+            <button
+              disabled={userAnswer}
+              value={atob(answer)}
+              onClick={callback}
+            >
+              {atob(answer)}
             </button>
           </div>
         ))}

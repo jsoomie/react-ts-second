@@ -18,7 +18,7 @@ export enum Difficulty {
 }
 
 export const fetchData = async (amount: number, difficulty: Difficulty) => {
-  const endpoint = `https://opentdb.com/api.php?amount=${amount}&difficulty${difficulty}&type=multiple`;
+  const endpoint = `https://opentdb.com/api.php?amount=${amount}&difficulty${difficulty}&type=multiple&encode=base64`;
   const data = await (await fetch(endpoint)).json();
   return data.results.map((question: Question) => (
     {
