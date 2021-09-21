@@ -1,2 +1,2 @@
 // COMPONENTS PAGES INDEX
-export {} from "";
+export { default as QuestionCard } from "./QuestionCard";
