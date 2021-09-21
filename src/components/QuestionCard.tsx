@@ -23,9 +23,10 @@ export const QuestionCard: React.FC<Props> = ({
       <p>{question}</p>
       <div>
         {answers.map((answer) => (
-          <div>
-            <button disabled={userAnswer} onClick={callback}></button>
-            <span>{answer}</span>
+          <div key={answer}>
+            <button disabled={userAnswer} value={answer} onClick={callback}>
+              {answer}
+            </button>
           </div>
         ))}
       </div>
