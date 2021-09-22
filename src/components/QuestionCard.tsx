@@ -1,4 +1,5 @@
 import { AnswerObject } from "../pages/HomePage";
+import { Wrapper, ButtonWrapper } from "./QuestionCard.styles";
 
 type Props = {
   question: string;
@@ -18,14 +19,18 @@ export const QuestionCard: React.FC<Props> = ({
   totalQuestions,
 }) => {
   return (
-    <div>
+    <Wrapper>
       <p className="QuestionContainer">
         Question: {questionNumber} / {totalQuestions}
       </p>
       <p>{atob(question)}</p>
       <div>
         {answers.map((answer) => (
-          <div key={answer}>
+          <ButtonWrapper
+            correct={userAnswer?.correctAnswer === answer}
+            userClicked={userAnswer?.answer === answer}
+            key={answer}
+          >
             <button
               disabled={!!userAnswer}
               value={atob(answer)}
@@ -33,10 +38,10 @@ export const QuestionCard: React.FC<Props> = ({
             >
               {atob(answer)}
             </button>
-          </div>
+          </ButtonWrapper>
         ))}
       </div>
-    </div>
+    </Wrapper>
   );
 };
 
