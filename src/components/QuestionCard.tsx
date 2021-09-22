@@ -1,8 +1,10 @@
+import { AnswerObject } from "../pages/HomePage";
+
 type Props = {
   question: string;
   answers: string[];
-  callback: any;
-  userAnswer: any;
+  callback: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  userAnswer: AnswerObject | undefined;
   questionNumber: number;
   totalQuestions: number;
 };
@@ -25,7 +27,7 @@ export const QuestionCard: React.FC<Props> = ({
         {answers.map((answer) => (
           <div key={answer}>
             <button
-              disabled={userAnswer}
+              disabled={!!userAnswer}
               value={atob(answer)}
               onClick={callback}
             >

@@ -2,10 +2,10 @@ import { QuestionCard } from "../components";
 import { useState } from "react";
 import { fetchData, Difficulty, QuestionState } from "../API";
 
-type AnswerObject = {
+export type AnswerObject = {
   question: string;
   answer: string;
-  coorect: boolean;
+  correct: boolean;
   correctAnswer: string;
 };
 
@@ -43,7 +43,6 @@ export default function HomePage() {
         correct,
         correctAnswer: questions[number].correct_answer,
       };
-
       setUserAnswers((prev) => [...prev, answerObject]);
     }
   };
@@ -67,7 +66,7 @@ export default function HomePage() {
         </button>
       ) : null}
 
-      {!gameOver ? <p className="score">Score: </p> : null}
+      {!gameOver ? <p className="score">Score: {score} </p> : null}
       {loading && <p>Loading...</p>}
       {!loading && !gameOver && (
         <QuestionCard
